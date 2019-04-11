@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo "Ich bin da MICHI"
+        echo "Ich bin da MICHI und LEON"
         // put your code here
         ?>
     </body>
