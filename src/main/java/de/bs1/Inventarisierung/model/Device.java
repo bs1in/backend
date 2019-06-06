@@ -13,4 +13,9 @@ public class Device {
     @Column(name = "description")
     private String description;
 
+    public Device(long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 }
