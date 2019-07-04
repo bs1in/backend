@@ -1,24 +1,27 @@
 package de.bs1.Inventarisierung.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Location {
     @Id
+    @Column(name = "id",nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "default_gen")
     private long id;
 
-    private String name;
+    @Column(name = "name", nullable = false)
+    private String name = "";
 
-    public Location(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @Column(name = "description", nullable = false)
+    private String description = "";
 
     public Location() {
+    }
+
+    public Location(long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     public long getId() {
@@ -35,5 +38,13 @@ public class Location {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

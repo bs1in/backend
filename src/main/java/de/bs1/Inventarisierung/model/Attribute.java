@@ -3,7 +3,7 @@ package de.bs1.Inventarisierung.model;
 import javax.persistence.*;
 
 @Entity
-public class Attribut {
+public class Attribute {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "default_gen")
@@ -12,12 +12,12 @@ public class Attribut {
     @Column
     private String name;
 
-    public Attribut(long id, String name) {
+    public Attribute(long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Attribut() {
+    public Attribute() {
     }
 
     public long getId() {

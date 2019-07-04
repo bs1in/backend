@@ -1,33 +1,34 @@
 package de.bs1.Inventarisierung.model;
 
-import org.w3c.dom.Attr;
-
 import javax.persistence.*;
+import java.util.Map;
 import java.util.Set;
 
 @Entity
 public class Device {
 
     @Id
+    @Column(name = "id",nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "default_gen")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "name", nullable = false)
+    private String name = "";
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "description", nullable = false)
+    private String description = "";
 
     @ManyToMany
-    Set<Attribut> attributs;
+    private Set<Attribute> attributes;
 
     @ManyToOne
-    Location location;
+    private Location location;
 
-    public Device(long id, String name, String description, Set<Attribut> attributs, Location location) {
+    public Device(long id, String name, String description, Set<Attribute> attributes, Location location) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.attributs = attributs;
+        this.attributes = attributes;
         this.location = location;
     }
 
@@ -58,12 +59,12 @@ public class Device {
         this.description = description;
     }
 
-    public Set<Attribut> getAttributs() {
-        return attributs;
+    public Set<Attribute> getAttributes() {
+        return attributes;
     }
 
-    public void setAttributs(Set<Attribut> attributs) {
-        this.attributs = attributs;
+    public void setAttributes(Set<Attribute> attributes) {
+        this.attributes = attributes;
     }
 
     public Location getLocation() {
