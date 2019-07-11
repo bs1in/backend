@@ -18,6 +18,11 @@ public class Location {
     public Location() {
     }
 
+    public Location(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public Location(long id, String name, String description) {
         this.id = id;
         this.name = name;

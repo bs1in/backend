@@ -23,7 +23,7 @@ public class Device {
     private Map<String, String> attributes = new HashMap<String, String>();*/
 
     @ManyToOne
-    private Location location;
+    private Location location = new Location("Kein Ort", "");
 
     public Device(long id, String name, String description,  /*Map<String, String> attributes,*/ Location location) {
         this.id = id;

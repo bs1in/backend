@@ -50,6 +50,19 @@ public class TicketController {
         return null;
     }
 
+    @RequestMapping(value = "/api/tickets/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    public TicketDTO updateTicketByID(@PathVariable("id") Long id, @RequestBody TicketDTO requestTicket) {
+        Optional<Ticket> ticket = ticketRepository.findById(id);
+        Optional<Device> device = deviceRepository.findById(requestTicket.getDevice());
+        if (ticket.isPresent() && device.isPresent()) {
+            Ticket t = new Ticket(device.get(), requestTicket.getDescription(), requestTicket.isDone());
+            t = ticketRepository.save(t);
+            return new TicketDTO(t.getId(), t.getDevice().getId(), t.getDescription(), t.isDone());
+        }
+        return null;
+    }
+
 
     @RequestMapping(value = "/api/tickets", method = RequestMethod.POST)
     private TicketDTO insertTicket(@RequestBody TicketDTO requestTicket) {
