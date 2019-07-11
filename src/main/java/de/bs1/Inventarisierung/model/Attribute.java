@@ -1,4 +1,4 @@
-package de.bs1.Inventarisierung.model;
+/*package de.bs1.Inventarisierung.model;
 
 import javax.persistence.*;
 
@@ -36,3 +36,4 @@ public class Attribute {
         this.name = name;
     }
 }
+*/

@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import de.bs1.Inventarisierung.Repos.DeviceRepository;
+import de.bs1.Inventarisierung.Repos.LocationRepository;
 import de.bs1.Inventarisierung.model.Device;
 import de.bs1.Inventarisierung.model.Location;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -23,6 +24,9 @@ public class DevicesController {
 
     @Autowired
     DeviceRepository deviceRepository;
+    @Autowired
+    LocationRepository locationRepository;
+
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @ResponseBody
@@ -50,6 +54,7 @@ public class DevicesController {
 
     @RequestMapping(value = "/api/devices", method = RequestMethod.POST)
     private Device insertDevice(@RequestBody Device device) {
+        locationRepository.save(device.getLocation());
         return deviceRepository.save(device);
     }
 }

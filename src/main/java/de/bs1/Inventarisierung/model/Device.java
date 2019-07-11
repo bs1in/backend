@@ -1,6 +1,7 @@
 package de.bs1.Inventarisierung.model;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,17 +19,17 @@ public class Device {
     @Column(name = "description", nullable = false)
     private String description = "";
 
-    @ManyToMany
-    private Set<Attribute> attributes;
+    /*@Column(name = "attributes", nullable = false)
+    private Map<String, String> attributes = new HashMap<String, String>();*/
 
     @ManyToOne
     private Location location;
 
-    public Device(long id, String name, String description, Set<Attribute> attributes, Location location) {
+    public Device(long id, String name, String description,  /*Map<String, String> attributes,*/ Location location) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.attributes = attributes;
+        /*this.attributes = attributes;*/
         this.location = location;
     }
 
@@ -59,13 +60,13 @@ public class Device {
         this.description = description;
     }
 
-    public Set<Attribute> getAttributes() {
+   /* public  Map<String, String> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(Set<Attribute> attributes) {
+    public void setAttributes( Map<String, String> attributes) {
         this.attributes = attributes;
-    }
+    }*/
 
     public Location getLocation() {
         return location;
